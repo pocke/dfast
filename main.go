@@ -1,12 +1,11 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"io"
 	"os"
 
 	"github.com/docker/docker/builder/dockerfile/parser"
+	"github.com/k0kubun/pp"
 )
 
 func main() {
@@ -39,10 +38,6 @@ func Show(r io.Reader) error {
 		return err
 	}
 
-	b, err := json.MarshalIndent(n, "", "  ")
-	if err != nil {
-		return err
-	}
-	fmt.Println(string(b))
+	pp.Println(n)
 	return nil
 }
